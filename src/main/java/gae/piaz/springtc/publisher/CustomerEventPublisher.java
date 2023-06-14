@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class CustomerEventPublisher {
+public class CustomerEventPublisher
+{
     private final KafkaTemplate<String, Object> kafkaTemplate;
 
-    public void publishCustomerCreatedEvent(CustomerDTO data) {
-        kafkaTemplate.send("customers", data);
-        log.info("CustomerCreatedEvent sent to products topic");
+    public void publishCustomerCreatedEvent(CustomerDTO data)
+    {
+	kafkaTemplate.send("customers", data);
+	log.info("CustomerCreatedEvent sent to products topic");
     }
 }

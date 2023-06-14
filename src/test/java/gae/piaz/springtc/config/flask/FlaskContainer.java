@@ -3,10 +3,10 @@ package gae.piaz.springtc.config.flask;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.images.builder.ImageFromDockerfile;
 
-public class PythonContainer extends GenericContainer<PythonContainer>
+public final class FlaskContainer extends GenericContainer<FlaskContainer>
 {
-    public PythonContainer(ImageFromDockerfile image)
+    public FlaskContainer(final ImageFromDockerfile aImageFromDockerfile)
     {
-	super(image);
+	super(aImageFromDockerfile);
     }
 }

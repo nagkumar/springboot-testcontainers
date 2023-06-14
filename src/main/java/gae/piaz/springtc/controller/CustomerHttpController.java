@@ -16,35 +16,40 @@ import java.util.List;
 @ResponseBody
 @RequiredArgsConstructor
 @Slf4j
-public class CustomerHttpController {
+public class CustomerHttpController
+{
 
     private final CustomerService customerService;
 
     @GetMapping(value = "/customers", produces = "application/json")
-    public List<CustomerDTO> customers() {
-        List<CustomerDTO> customers = this.customerService.findAll();
-        log.info("Found {} customers", customers.size());
-        return customers;
+    public List<CustomerDTO> customers()
+    {
+	List<CustomerDTO> customers = this.customerService.findAll();
+	log.info("Found {} customers", customers.size());
+	return customers;
     }
 
     @GetMapping(value = "/customers-ext", produces = "application/json")
-    public List<CustomerDTO> customersExt() {
-        List<CustomerDTO> customers = this.customerService.findExternal();
-        log.info("Found {} customers", customers.size());
-        return customers;
+    public List<CustomerDTO> customersExt()
+    {
+	List<CustomerDTO> customers = this.customerService.findExternal();
+	log.info("Found {} customers", customers.size());
+	return customers;
     }
 
     @GetMapping("/customers/{name}")
-    public List<CustomerDTO> byName(@PathVariable String name) {
-        List<CustomerDTO> customers = this.customerService.findByName(name);
-        log.info("Found {} customers", customers.size());
-        return customers;
+    public List<CustomerDTO> byName(@PathVariable String name)
+    {
+	List<CustomerDTO> customers = this.customerService.findByName(name);
+	log.info("Found {} customers", customers.size());
+	return customers;
     }
 
     @PostMapping(value = "/customers", consumes = "application/json")
-    public void saveCustomer(@RequestBody CustomerDTO customerDTO) {
-        customerService.saveAsync(customerDTO);
-        log.info("Saved asynchronously a new customer");
+    public void saveCustomer(@RequestBody CustomerDTO customerDTO)
+    {
+	customerService.saveAsync(customerDTO);
+	log.info("Saved asynchronously a new customer");
     }
 
 }

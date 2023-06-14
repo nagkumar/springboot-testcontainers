@@ -1,6 +1,5 @@
-package gae.piaz.springtc.config;
+package gae.piaz.springtc.config.postgres;
 
-import gae.piaz.springtc.config.postgres.PostgresContainer;
 import org.springframework.boot.autoconfigure.jdbc.JdbcConnectionDetails;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +8,7 @@ import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.utility.DockerImageName;
 
 @Configuration
-public class TestContainerConfig
+public class TestPostgresConfig
 {
     private static final DockerImageName POSTGRES_IMAGE = DockerImageName.parse("postgres:15.1-alpine");
 

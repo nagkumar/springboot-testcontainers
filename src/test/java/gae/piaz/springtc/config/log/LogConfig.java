@@ -15,8 +15,8 @@ import org.testcontainers.containers.output.Slf4jLogConsumer;
 
 @Configuration
 @Service
-public class TestContainerLogConfig {
-
+public class LogConfig
+{
     private static final Logger LOGGER = LoggerFactory.getLogger(TestApplication.class);
 
     @Autowired
@@ -32,16 +32,17 @@ public class TestContainerLogConfig {
     private FlaskContainer flaskContainer;
 
     @PostConstruct
-    public void init() {
+    public void init()
+    {
 
-        // Attaching the log of the Containers we create to the log of the Spring-Boot app.
-        Slf4jLogConsumer logConsumer = new Slf4jLogConsumer(LOGGER);
-        logConsumer.withPrefix("TC-LOG--->");
+	// Attaching the log of the Containers we create to the log of the Spring-Boot app.
+	Slf4jLogConsumer logConsumer = new Slf4jLogConsumer(LOGGER);
+	logConsumer.withPrefix("TC-LOG--->");
 
-        postgresContainer.followOutput(logConsumer);
-        redisContainer.followOutput(logConsumer);
-        kafkaContainer.followOutput(logConsumer);
-        flaskContainer.followOutput(logConsumer);
+	postgresContainer.followOutput(logConsumer);
+	redisContainer.followOutput(logConsumer);
+	kafkaContainer.followOutput(logConsumer);
+	flaskContainer.followOutput(logConsumer);
 
     }
 

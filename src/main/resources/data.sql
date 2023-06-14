@@ -1,4 +1,5 @@
-delete from customer;
+delete
+from customer;
 
 insert into customer(name)
 values ('Phil');

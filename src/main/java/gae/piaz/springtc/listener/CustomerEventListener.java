@@ -13,17 +13,19 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Transactional
 @Slf4j
-class CustomerEventListener {
+class CustomerEventListener
+{
 
     private final CustomerRepository customerRepository;
 
     @KafkaListener(topics = "customers")
-    public void handleCustomerCreatedEvent(CustomerDTO customerDTO) {
-        log.info("Customer event received from customer topic");
-        Customer customer = new Customer();
-        customer.setId(customerDTO.id());
-        customer.setName(customerDTO.name());
-        customerRepository.save(customer);
+    public void handleCustomerCreatedEvent(CustomerDTO customerDTO)
+    {
+	log.info("Customer event received from customer topic");
+	Customer customer = new Customer();
+	customer.setId(customerDTO.id());
+	customer.setName(customerDTO.name());
+	customerRepository.save(customer);
     }
 
 }

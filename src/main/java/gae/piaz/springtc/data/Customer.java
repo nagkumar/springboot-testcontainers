@@ -5,29 +5,35 @@ import jakarta.persistence.Id;
 
 
 @Entity
-public class Customer {
+public class Customer
+{
 
     @Id
     private Integer id;
     private String name;
 
-    public Customer() {
-        super();
+    public Customer()
+    {
+	super();
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getId()
+    {
+	return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer id)
+    {
+	this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getName()
+    {
+	return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String name)
+    {
+	this.name = name;
     }
 }

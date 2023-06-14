@@ -10,15 +10,14 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan("gae.piaz.springtc")
 @EntityScan("gae.piaz.springtc.data")
 @EnableCaching
-public class Application {
+public class Application
+{
 
     // To run this locally (with 'testcontainers'): run Main in: test/gae.piaz.springtc.TestApplication
     // or use ./gradlew bootTestRun
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+    public static void main(String[] args)
+    {
+	SpringApplication.run(Application.class, args);
     }
 
 }
-
-
-

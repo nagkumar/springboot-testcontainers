@@ -18,36 +18,47 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class CustomerService {
+public class CustomerService
+{
 
     private final CustomerRepository customerRepository;
     private final CustomerEventPublisher publisher;
     private final Environment env;
 
-    public List<CustomerDTO> findAll() {
-        return customerRepository.findAll().stream().map(customer ->
-                new CustomerDTO(customer.getName(), customer.getId())).toList();
+    public List<CustomerDTO> findAll()
+    {
+	return customerRepository.findAll()
+				 .stream()
+				 .map(customer ->
+					      new CustomerDTO(customer.getName(), customer.getId()))
+				 .toList();
     }
 
     @Cacheable(RedisConfig.CUSTOMER_CACHE)
-    public List<CustomerDTO> findByName(String name) {
-        log.info("------ Hitting database & not using cache! ------ ");
-        return customerRepository.findByNameIgnoreCase(name).stream().map(customer ->
-                new CustomerDTO(customer.getName(), customer.getId())).toList();
+    public List<CustomerDTO> findByName(String name)
+    {
+	log.info("------ Hitting database & not using cache! ------ ");
+	return customerRepository.findByNameIgnoreCase(name)
+				 .stream()
+				 .map(customer ->
+					      new CustomerDTO(customer.getName(), customer.getId()))
+				 .toList();
     }
 
-    public List<CustomerDTO> findExternal() {
-        String url =
-                env.getProperty("external.server.host") +
-                        env.getProperty("external.server.port") +
-                        "/customers";
+    public List<CustomerDTO> findExternal()
+    {
+	String url =
+		env.getProperty("external.server.host") +
+		env.getProperty("external.server.port") +
+		"/customers";
 
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<CustomerDTO[]> extCust = restTemplate.getForEntity(url, CustomerDTO[].class);
-        return Arrays.asList(extCust.getBody());
+	RestTemplate restTemplate = new RestTemplate();
+	ResponseEntity<CustomerDTO[]> extCust = restTemplate.getForEntity(url, CustomerDTO[].class);
+	return Arrays.asList(extCust.getBody());
     }
 
-    public void saveAsync(CustomerDTO data) {
-        publisher.publishCustomerCreatedEvent(data);
+    public void saveAsync(CustomerDTO data)
+    {
+	publisher.publishCustomerCreatedEvent(data);
     }
 }
