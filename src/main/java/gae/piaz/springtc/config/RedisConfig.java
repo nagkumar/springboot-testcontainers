@@ -10,7 +10,6 @@ import java.time.Duration;
 @Configuration
 public class RedisConfig
 {
-
     public final static String CUSTOMER_CACHE = "customerCache";
 
     @Bean
@@ -27,5 +26,4 @@ public class RedisConfig
 		.withCacheConfiguration(CUSTOMER_CACHE,
 					RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMinutes(5)));
     }
-
 }
