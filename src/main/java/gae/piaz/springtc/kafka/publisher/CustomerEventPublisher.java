@@ -1,4 +1,4 @@
-package gae.piaz.springtc.publisher;
+package gae.piaz.springtc.kafka.publisher;
 
 import gae.piaz.springtc.controller.CustomerDTO;
 import lombok.RequiredArgsConstructor;
@@ -13,9 +13,9 @@ public class CustomerEventPublisher
 {
     private final KafkaTemplate<String, Object> kafkaTemplate;
 
-    public void publishCustomerCreatedEvent(CustomerDTO data)
+    public void publishCustomerCreatedEvent(final CustomerDTO aCustomerDTO)
     {
-	kafkaTemplate.send("customers", data);
+	kafkaTemplate.send("customers", aCustomerDTO);
 	log.info("CustomerCreatedEvent sent to products topic");
     }
 }

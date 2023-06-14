@@ -3,7 +3,7 @@ package gae.piaz.springtc.service;
 import gae.piaz.springtc.config.RedisConfig;
 import gae.piaz.springtc.controller.CustomerDTO;
 import gae.piaz.springtc.data.CustomerRepository;
-import gae.piaz.springtc.publisher.CustomerEventPublisher;
+import gae.piaz.springtc.kafka.publisher.CustomerEventPublisher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
@@ -20,7 +20,6 @@ import java.util.List;
 @Slf4j
 public class CustomerService
 {
-
     private final CustomerRepository customerRepository;
     private final CustomerEventPublisher publisher;
     private final Environment env;

@@ -43,4 +43,6 @@ public class LogConfig
 	kafkaContainer.followOutput(logConslSlf4jLogConsumermer);
 	flaskContainer.followOutput(logConslSlf4jLogConsumermer);
     }
+
+
 }

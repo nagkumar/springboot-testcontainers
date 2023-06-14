@@ -1,4 +1,4 @@
-package gae.piaz.springtc.listener;
+package gae.piaz.springtc.kafka.listener;
 
 import gae.piaz.springtc.controller.CustomerDTO;
 import gae.piaz.springtc.data.Customer;
@@ -15,17 +15,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 class CustomerEventListener
 {
-
     private final CustomerRepository customerRepository;
 
     @KafkaListener(topics = "customers")
-    public void handleCustomerCreatedEvent(CustomerDTO customerDTO)
+    public void handleCustomerCreatedEvent(final CustomerDTO aCustomerDTO)
     {
 	log.info("Customer event received from customer topic");
 	Customer customer = new Customer();
-	customer.setId(customerDTO.id());
-	customer.setName(customerDTO.name());
+	customer.setId(aCustomerDTO.id());
+	customer.setName(aCustomerDTO.name());
 	customerRepository.save(customer);
     }
-
 }
