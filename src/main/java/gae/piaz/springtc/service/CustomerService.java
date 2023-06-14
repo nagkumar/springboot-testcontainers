@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -46,13 +47,13 @@ public class CustomerService
 
     public List<CustomerDTO> fetchFromFlask()
     {
-	final String lUrl = env.getProperty("external.server.host") +
-			    env.getProperty("external.server.port") +
-			    "/customers";
+	final String lUrl = env.getProperty("flask.server.host") +
+			    env.getProperty("flask.server.port") +
+			    "/customersFlask";
 
 	final RestTemplate lRestTemplate = new RestTemplate();
 	final ResponseEntity<CustomerDTO[]> lResponseEntity = lRestTemplate.getForEntity(lUrl, CustomerDTO[].class);
-	return Arrays.asList(lResponseEntity.getBody());
+	return Arrays.asList(Objects.requireNonNull(lResponseEntity.getBody()));
     }
 
     public void publishOnKafka(final CustomerDTO aCustomerDTO)

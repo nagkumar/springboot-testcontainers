@@ -9,7 +9,7 @@ def hello_world():
     return 'Hello, Docker!'
 
 
-@app.route('/customers')
+@app.route('/customersFlask')
 def customer():
     list = [
         {'name': 'Python Tano', 'id': 201},
