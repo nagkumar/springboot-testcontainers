@@ -1,6 +1,9 @@
-package gae.piaz.springtc.config;
+package gae.piaz.springtc.config.log;
 
 import gae.piaz.springtc.TestApplication;
+import gae.piaz.springtc.config.flask.FlaskContainer;
+import gae.piaz.springtc.config.postgres.PostgresContainer;
+import gae.piaz.springtc.config.redis.RedisContainer;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +29,7 @@ public class TestContainerLogConfig {
     private KafkaContainer kafkaContainer;
 
     @Autowired
-    private PythonContainer pythonContainer;
+    private FlaskContainer flaskContainer;
 
     @PostConstruct
     public void init() {
@@ -38,7 +41,7 @@ public class TestContainerLogConfig {
         postgresContainer.followOutput(logConsumer);
         redisContainer.followOutput(logConsumer);
         kafkaContainer.followOutput(logConsumer);
-        pythonContainer.followOutput(logConsumer);
+        flaskContainer.followOutput(logConsumer);
 
     }
 

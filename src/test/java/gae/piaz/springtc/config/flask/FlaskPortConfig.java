@@ -1,4 +1,4 @@
-package gae.piaz.springtc.config;
+package gae.piaz.springtc.config.flask;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +12,12 @@ import org.testcontainers.containers.GenericContainer;
 public class ExternalPortConfig {
 
     @Autowired
-    private GenericContainer pythonContainer;
+    private GenericContainer flaskContainer;
 
     @PostConstruct
     public void initPort() {
         System.setProperty("EXTERNAL_CUSTOMER_SERVICE_PORT", String.valueOf(
-                pythonContainer.getMappedPort(5000)
+                flaskContainer.getMappedPort(5000)
         ));
     }
 }
