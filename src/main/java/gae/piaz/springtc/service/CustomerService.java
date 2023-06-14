@@ -24,7 +24,7 @@ public class CustomerService
     private final CustomerEventPublisher publisher;
     private final Environment env;
 
-    public final List<CustomerDTO> findAll()
+    public List<CustomerDTO> findAll()
     {
 	return customerRepository.findAll()
 				 .stream()
@@ -44,7 +44,7 @@ public class CustomerService
 				 .toList();
     }
 
-    public final List<CustomerDTO> findExternal()
+    public List<CustomerDTO> findExternal()
     {
 	String url = env.getProperty("external.server.host") +
 		     env.getProperty("external.server.port") +
