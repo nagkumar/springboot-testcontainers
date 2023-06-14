@@ -17,7 +17,7 @@ public class FlaskPortConfig
     @PostConstruct
     public void initPort()
     {
-	System.setProperty("EXTERNAL_CUSTOMER_SERVICE_PORT",
+	System.setProperty("FLASK_CUSTOMER_SERVICE_PORT",
 			   String.valueOf(flaskContainer.getMappedPort(5000)));
     }
 }
