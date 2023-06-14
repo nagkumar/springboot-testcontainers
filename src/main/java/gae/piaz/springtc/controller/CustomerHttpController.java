@@ -24,7 +24,7 @@ public class CustomerHttpController
     @GetMapping(value = "/customers", produces = "application/json")
     public List<CustomerDTO> customers()
     {
-	List<CustomerDTO> customers = this.customerService.findAll();
+	List<CustomerDTO> customers = this.customerService.fetchFromDB();
 	log.info("Found {} customers", customers.size());
 	return customers;
     }
@@ -32,7 +32,7 @@ public class CustomerHttpController
     @GetMapping(value = "/customers-ext", produces = "application/json")
     public List<CustomerDTO> customersExt()
     {
-	List<CustomerDTO> customers = this.customerService.findExternal();
+	List<CustomerDTO> customers = this.customerService.fetchFromFlask();
 	log.info("Found {} customers", customers.size());
 	return customers;
     }
@@ -40,7 +40,7 @@ public class CustomerHttpController
     @GetMapping("/customers/{name}")
     public List<CustomerDTO> byName(@PathVariable String name)
     {
-	List<CustomerDTO> customers = this.customerService.findByName(name);
+	List<CustomerDTO> customers = this.customerService.fetchFromCacheByName(name);
 	log.info("Found {} customers", customers.size());
 	return customers;
     }
@@ -48,7 +48,7 @@ public class CustomerHttpController
     @PostMapping(value = "/customers", consumes = "application/json")
     public void saveCustomer(@RequestBody CustomerDTO customerDTO)
     {
-	customerService.saveAsync(customerDTO);
+	customerService.publishOnKafka(customerDTO);
 	log.info("Saved asynchronously a new customer");
     }
 

@@ -24,7 +24,7 @@ public class CustomerService
     private final CustomerEventPublisher publisher;
     private final Environment env;
 
-    public List<CustomerDTO> findAll()
+    public List<CustomerDTO> fetchFromDB()
     {
 	return customerRepository.findAll()
 				 .stream()
@@ -34,7 +34,7 @@ public class CustomerService
     }
 
     @Cacheable(RedisConfig.CUSTOMER_CACHE)
-    public List<CustomerDTO> findByName(final String aName)
+    public List<CustomerDTO> fetchFromCacheByName(final String aName)
     {
 	log.info("------ Hitting database & not using cache! ------ ");
 	return customerRepository.findByNameIgnoreCase(aName)
@@ -44,7 +44,7 @@ public class CustomerService
 				 .toList();
     }
 
-    public List<CustomerDTO> findExternal()
+    public List<CustomerDTO> fetchFromFlask()
     {
 	final String lUrl = env.getProperty("external.server.host") +
 			    env.getProperty("external.server.port") +
@@ -55,7 +55,7 @@ public class CustomerService
 	return Arrays.asList(lResponseEntity.getBody());
     }
 
-    public void saveAsync(final CustomerDTO aCustomerDTO)
+    public void publishOnKafka(final CustomerDTO aCustomerDTO)
     {
 	publisher.publishCustomerCreatedEvent(aCustomerDTO);
     }
