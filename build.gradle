@@ -20,24 +20,25 @@ repositories {
 
 dependencies {
 
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-cache'
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.1.0'
+    implementation 'org.springframework.boot:spring-boot-starter-cache:3.1.0'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis:3.0.4'
+    implementation 'org.springframework.kafka:spring-kafka:3.0.4'
 
-    runtimeOnly 'org.postgresql:postgresql'
+    runtimeOnly 'org.postgresql:postgresql:42.5.4'
 
-    compileOnly 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok:1.18.26'
 
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:3.0.4'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.0'
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
-    testImplementation 'org.testcontainers:kafka'
-    testImplementation 'org.testcontainers:postgresql'
-    testImplementation 'org.projectlombok:lombok:1.18.22'
 
-    testAnnotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    testImplementation 'org.testcontainers:kafka:1.17.6'
+    testImplementation 'org.testcontainers:postgresql:1.17.6'
+    testImplementation 'org.projectlombok:lombok:1.18.26'
+
+    testAnnotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:3.0.4'
 }
