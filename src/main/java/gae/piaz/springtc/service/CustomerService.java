@@ -46,16 +46,16 @@ public class CustomerService
 
     public List<CustomerDTO> findExternal()
     {
-	String url = env.getProperty("external.server.host") +
-		     env.getProperty("external.server.port") +
-		     "/customers";
+	final String lUrl = env.getProperty("external.server.host") +
+			    env.getProperty("external.server.port") +
+			    "/customers";
 
-	RestTemplate restTemplate = new RestTemplate();
-	ResponseEntity<CustomerDTO[]> extCust = restTemplate.getForEntity(url, CustomerDTO[].class);
-	return Arrays.asList(extCust.getBody());
+	final RestTemplate lRestTemplate = new RestTemplate();
+	final ResponseEntity<CustomerDTO[]> lResponseEntity = lRestTemplate.getForEntity(lUrl, CustomerDTO[].class);
+	return Arrays.asList(lResponseEntity.getBody());
     }
 
-    public final void saveAsync(final CustomerDTO aCustomerDTO)
+    public void saveAsync(final CustomerDTO aCustomerDTO)
     {
 	publisher.publishCustomerCreatedEvent(aCustomerDTO);
     }
