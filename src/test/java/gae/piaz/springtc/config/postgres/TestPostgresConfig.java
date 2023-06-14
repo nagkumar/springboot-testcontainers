@@ -22,7 +22,6 @@ public class TestPostgresConfig
     @ServiceConnection(type = JdbcConnectionDetails.class)
     public PostgresContainer postgresContainer()
     {
-
 	final long memoryInBytes = 64L * 1024L * 1024L;
 	final long memorySwapInBytes = 128L * 1024L * 1024L;
 
