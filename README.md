@@ -13,23 +13,23 @@ CURL Requests :
 Retrieve all customers from local postgres db:
 
 ```shell
-curl http://localhost:8181/customers
+curl http://localhost:8181/customersPG
 ```
 
 Retrieve all customers from external service:
 
 ```shell
-curl http://localhost:8181/customers-ext
+curl http://localhost:8181/customersFlask
 ```
 
 Retrieve a customer by name (Redis Cache for Postgres as ID fetched is related to DB not the flask )
 
  ```shell
-curl http://localhost:8181/customers/pino
+curl http://localhost:8181/customersRedis/pino
 ```
 
 Send a new customer Event through Kafka (then persist in postgres):
 
 ```shell
-curl -d "{\"id\": 9191,\"name\": \"Curlo\"}" -H "Content-Type: application/json" -X POST http://localhost:8181/customers
+curl -d "{\"id\": 9191,\"name\": \"Curlo\"}" -H "Content-Type: application/json" -X POST http://localhost:8181/customersKafka
 ```

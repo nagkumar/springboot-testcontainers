@@ -18,38 +18,38 @@ import java.util.List;
 @Slf4j
 public class CustomerHttpController
 {
+    private static final String FOUND_CUSTOMERS = "Found {} customers";
 
     private final CustomerService customerService;
 
-    @GetMapping(value = "/customers", produces = "application/json")
+    @GetMapping(value = "/customersPG", produces = "application/json")
     public List<CustomerDTO> customers()
     {
 	List<CustomerDTO> customers = this.customerService.fetchFromDB();
-	log.info("Found {} customers", customers.size());
+	log.info(FOUND_CUSTOMERS, customers.size());
 	return customers;
     }
 
-    @GetMapping(value = "/customers-ext", produces = "application/json")
+    @GetMapping(value = "/customersFlask", produces = "application/json")
     public List<CustomerDTO> customersExt()
     {
 	List<CustomerDTO> customers = this.customerService.fetchFromFlask();
-	log.info("Found {} customers", customers.size());
+	log.info(FOUND_CUSTOMERS, customers.size());
 	return customers;
     }
 
-    @GetMapping("/customers/{name}")
+    @GetMapping("/customersRedis/{name}")
     public List<CustomerDTO> byName(@PathVariable String name)
     {
 	List<CustomerDTO> customers = this.customerService.fetchFromCacheByName(name);
-	log.info("Found {} customers", customers.size());
+	log.info(FOUND_CUSTOMERS, customers.size());
 	return customers;
     }
 
-    @PostMapping(value = "/customers", consumes = "application/json")
+    @PostMapping(value = "/customersKafka", consumes = "application/json")
     public void saveCustomer(@RequestBody CustomerDTO customerDTO)
     {
 	customerService.publishOnKafka(customerDTO);
 	log.info("Saved asynchronously a new customer");
     }
-
 }
