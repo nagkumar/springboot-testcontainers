@@ -10,8 +10,12 @@ sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
-    maven { url 'https://repo.spring.io/milestone' }
-    maven { url 'https://repo.spring.io/snapshot' }
+    maven {
+	url 'https://repo.spring.io/milestone'
+    }
+    maven {
+	url 'https://repo.spring.io/snapshot'
+    }
 }
 
 dependencies {
@@ -36,5 +40,4 @@ dependencies {
     testImplementation 'org.projectlombok:lombok:1.18.22'
 
     testAnnotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-
 }

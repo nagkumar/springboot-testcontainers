@@ -24,7 +24,7 @@ public class CustomerService
     private final CustomerEventPublisher publisher;
     private final Environment env;
 
-    public List<CustomerDTO> findAll()
+    public final List<CustomerDTO> findAll()
     {
 	return customerRepository.findAll()
 				 .stream()
@@ -34,30 +34,29 @@ public class CustomerService
     }
 
     @Cacheable(RedisConfig.CUSTOMER_CACHE)
-    public List<CustomerDTO> findByName(String name)
+    public List<CustomerDTO> findByName(final String aName)
     {
 	log.info("------ Hitting database & not using cache! ------ ");
-	return customerRepository.findByNameIgnoreCase(name)
+	return customerRepository.findByNameIgnoreCase(aName)
 				 .stream()
 				 .map(customer ->
 					      new CustomerDTO(customer.getName(), customer.getId()))
 				 .toList();
     }
 
-    public List<CustomerDTO> findExternal()
+    public final List<CustomerDTO> findExternal()
     {
-	String url =
-		env.getProperty("external.server.host") +
-		env.getProperty("external.server.port") +
-		"/customers";
+	String url = env.getProperty("external.server.host") +
+		     env.getProperty("external.server.port") +
+		     "/customers";
 
 	RestTemplate restTemplate = new RestTemplate();
 	ResponseEntity<CustomerDTO[]> extCust = restTemplate.getForEntity(url, CustomerDTO[].class);
 	return Arrays.asList(extCust.getBody());
     }
 
-    public void saveAsync(CustomerDTO data)
+    public final void saveAsync(final CustomerDTO aCustomerDTO)
     {
-	publisher.publishCustomerCreatedEvent(data);
+	publisher.publishCustomerCreatedEvent(aCustomerDTO);
     }
 }

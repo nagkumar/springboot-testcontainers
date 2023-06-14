@@ -11,20 +11,25 @@ Furtner details and explanations are available here: https://gaetanopiazzolla.gi
 CURL Requests :
 
 Retrieve all customers from local postgres db:
+
 ```shell
 curl http://localhost:8181/customers
 ```
 
 Retrieve all customers from external service:
+
 ```shell
 curl http://localhost:8181/customers-ext
 ```
 
 Retrieve a customer by name (Redis Cache for Postgres as ID fetched is related to DB not the flask )
+
  ```shell
 curl http://localhost:8181/customers/pino
 ```
+
 Send a new customer Event through Kafka (then persist in postgres):
+
 ```shell
 curl -d "{\"id\": 9191,\"name\": \"Curlo\"}" -H "Content-Type: application/json" -X POST http://localhost:8181/customers
 ```

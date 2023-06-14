@@ -7,7 +7,6 @@ import jakarta.persistence.Id;
 @Entity
 public class Customer
 {
-
     @Id
     private Integer id;
     private String name;
