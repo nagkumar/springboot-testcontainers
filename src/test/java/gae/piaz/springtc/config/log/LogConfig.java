@@ -34,16 +34,13 @@ public class LogConfig
     @PostConstruct
     public void init()
     {
-
 	// Attaching the log of the Containers we create to the log of the Spring-Boot app.
-	Slf4jLogConsumer logConsumer = new Slf4jLogConsumer(LOGGER);
-	logConsumer.withPrefix("TC-LOG--->");
+	Slf4jLogConsumer logConslSlf4jLogConsumermer = new Slf4jLogConsumer(LOGGER);
+	logConslSlf4jLogConsumermer.withPrefix("TC-LOG--->");
 
-	postgresContainer.followOutput(logConsumer);
-	redisContainer.followOutput(logConsumer);
-	kafkaContainer.followOutput(logConsumer);
-	flaskContainer.followOutput(logConsumer);
-
+	postgresContainer.followOutput(logConslSlf4jLogConsumermer);
+	redisContainer.followOutput(logConslSlf4jLogConsumermer);
+	kafkaContainer.followOutput(logConslSlf4jLogConsumermer);
+	flaskContainer.followOutput(logConslSlf4jLogConsumermer);
     }
-
 }
