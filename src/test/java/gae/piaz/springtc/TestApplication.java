@@ -9,8 +9,7 @@ public final class TestApplication
     // in the same directory structure
     public static void main(final String[] aArgs)
     {
-	SpringApplication
-		.from(Application::main)
-		.run(aArgs);
+	SpringApplication.from(Application::main)
+			 .run(aArgs);
     }
 }
