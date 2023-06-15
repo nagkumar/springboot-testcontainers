@@ -16,7 +16,8 @@ public class TestFlaskConfig
     private ResourceLoader resourceLoader;
 
     @Bean
-    // @ServiceConnection we don't need auto-connection in this case.
+    //@ServiceConnection we don't need auto-connection in this case as we are reaching this
+    //through environment variables look at method gae.piaz.springtc.service.CustomerService.fetchFromFlask
     public FlaskContainer flaskContainer() throws IOException
     {
 	final long memoryInBytes = 32L * 1024L * 1024L;
@@ -27,11 +28,12 @@ public class TestFlaskConfig
 		new ImageFromDockerfile().withDockerfile(resource.getFile().toPath()))
 		// 5000 is the standard port of flask. check "FlaskPortConfig" for details
 		.withExposedPorts(5000)
-		.withCreateContainerCmdModifier(cmd -> {
-		    cmd.withName("flaskapp");
-		    cmd.getHostConfig()
-		       .withMemory(memoryInBytes)
-		       .withMemorySwap(memorySwapInBytes);
-		});
+		.withCreateContainerCmdModifier(cmd ->
+						{
+						    cmd.withName("flaskapp");
+						    cmd.getHostConfig()
+						       .withMemory(memoryInBytes)
+						       .withMemorySwap(memorySwapInBytes);
+						});
     }
 }
