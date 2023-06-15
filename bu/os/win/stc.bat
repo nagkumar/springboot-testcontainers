@@ -1,4 +1,4 @@
-doskey tcst=gradle clean bootTestRun
+doskey 0=start gradle clean bootTestRun
 
 doskey 1=curl http://localhost:8181/customersPG
 doskey 2=curl http://localhost:8181/customersFlask
