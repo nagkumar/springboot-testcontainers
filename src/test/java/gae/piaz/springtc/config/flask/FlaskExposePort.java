@@ -9,7 +9,7 @@ import org.testcontainers.containers.GenericContainer;
 // it-s possible to define a fixed port, but
 // This is by design, to avoid port collisions that may arise with locally running software or in between parallel test runs.
 @Configuration
-public class FlaskPortConfig
+public class FlaskExposePort
 {
     @Autowired
     private GenericContainer flaskContainer;
@@ -17,7 +17,7 @@ public class FlaskPortConfig
     @PostConstruct
     public void initPort()
     {
-	//System.setProperty("FLASK_CUSTOMER_SERVICE_HOST", "hwerlkjwehlwe/ewiewew");
+	//System.setProperty("FLASK_CUSTOMER_SERVICE_HOST", "www.abc.com);
 	System.setProperty("FLASK_CUSTOMER_SERVICE_PORT",
 			   String.valueOf(flaskContainer.getMappedPort(5000)));
     }

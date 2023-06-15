@@ -26,7 +26,7 @@ public class CreateFlaskInstance
 	Resource resource = resourceLoader.getResource("classpath:flask/Dockerfile");
 	return new FlaskContainer(
 		new ImageFromDockerfile().withDockerfile(resource.getFile().toPath()))
-		// 5000 is the standard port of flask. check "FlaskPortConfig" for details
+		// 5000 is the standard port of flask. check "FlaskExposePort" for details
 		.withExposedPorts(5000)
 		.withCreateContainerCmdModifier(cmd ->
 						{
