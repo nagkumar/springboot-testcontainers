@@ -15,7 +15,7 @@ import org.testcontainers.containers.output.Slf4jLogConsumer;
 
 @Configuration
 @Service
-public class LogConfig
+public class PipeLogs
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(TestApplication.class);
 

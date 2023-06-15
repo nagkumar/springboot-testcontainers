@@ -10,7 +10,7 @@ import org.testcontainers.images.builder.ImageFromDockerfile;
 import java.io.IOException;
 
 @Configuration
-public class TestFlaskConfig
+public class CreateFlaskInstance
 {
     @Autowired
     private ResourceLoader resourceLoader;

@@ -8,7 +8,7 @@ import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.utility.DockerImageName;
 
 @Configuration
-public class TestPostgresConfig
+public class CreatePGInstance
 {
     private static final DockerImageName POSTGRES_IMAGE = DockerImageName.parse("postgres:15.1-alpine");
 

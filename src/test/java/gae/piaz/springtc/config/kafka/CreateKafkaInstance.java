@@ -7,7 +7,7 @@ import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.utility.DockerImageName;
 
 @Configuration
-public class TestKafkaConfig
+public class CreateKafkaInstance
 {
     private static final DockerImageName KAFKA_IMAGE = DockerImageName.parse("confluentinc/cp-kafka:7.2.1");
 

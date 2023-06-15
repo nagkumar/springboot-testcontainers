@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.testcontainers.utility.DockerImageName;
 
 @Configuration
-public class TestRedisConfig
+public class CreateRedisInstance
 {
     private static final DockerImageName REDIS_IMAGE = DockerImageName.parse("redis:5.0.3-alpine");
 
