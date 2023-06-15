@@ -47,9 +47,8 @@ public class CustomerService
 
     public List<CustomerDTO> fetchFromFlask()
     {
-	final String lUrl = env.getProperty("flask.server.host") + ":" +
-			    env.getProperty("flask.server.port") +
-			    "/customersFlask";
+	final String lUrl = "http://" + env.getProperty("flask.server.host") + ":" +
+			    env.getProperty("flask.server.port") + "/customersFlask";
 
 	final RestTemplate lRestTemplate = new RestTemplate();
 	final ResponseEntity<CustomerDTO[]> lResponseEntity = lRestTemplate.getForEntity(lUrl, CustomerDTO[].class);
