@@ -1,4 +1,4 @@
-package gae.piaz.springtc.cfg;
+package gae.piaz.springtc.cfg.redis;
 
 import org.springframework.boot.autoconfigure.cache.RedisCacheManagerBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
@@ -8,7 +8,7 @@ import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import java.time.Duration;
 
 @Configuration
-public class RedisConfig
+public class RedisCFG
 {
     public static final String CUSTOMER_CACHE = "customerCache";
 

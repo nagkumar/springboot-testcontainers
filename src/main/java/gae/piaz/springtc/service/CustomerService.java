@@ -1,6 +1,6 @@
 package gae.piaz.springtc.service;
 
-import gae.piaz.springtc.cfg.RedisConfig;
+import gae.piaz.springtc.cfg.redis.RedisCFG;
 import gae.piaz.springtc.controller.CustomerDTO;
 import gae.piaz.springtc.data.CustomerRepository;
 import gae.piaz.springtc.kafka.publisher.CustomerEventPublisher;
@@ -34,7 +34,7 @@ public class CustomerService
 				 .toList();
     }
 
-    @Cacheable(RedisConfig.CUSTOMER_CACHE)
+    @Cacheable(RedisCFG.CUSTOMER_CACHE)
     public List<CustomerDTO> fetchFromCacheByName(final String aName)
     {
 	log.info("------ Hitting database & not using cache! ------ ");
