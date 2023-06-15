@@ -1,4 +1,4 @@
-package gae.piaz.springtc.config;
+package gae.piaz.springtc.cfg;
 
 import org.springframework.boot.autoconfigure.cache.RedisCacheManagerBuilderCustomizer;
 import org.springframework.context.annotation.Bean;

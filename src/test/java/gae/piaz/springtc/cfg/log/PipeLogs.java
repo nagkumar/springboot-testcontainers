@@ -1,9 +1,9 @@
-package gae.piaz.springtc.config.log;
+package gae.piaz.springtc.cfg.log;
 
 import gae.piaz.springtc.TestApplication;
-import gae.piaz.springtc.config.flask.FlaskContainer;
-import gae.piaz.springtc.config.postgres.PostgresContainer;
-import gae.piaz.springtc.config.redis.RedisContainer;
+import gae.piaz.springtc.cfg.flask.FlaskContainer;
+import gae.piaz.springtc.cfg.postgres.PostgresContainer;
+import gae.piaz.springtc.cfg.redis.RedisContainer;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

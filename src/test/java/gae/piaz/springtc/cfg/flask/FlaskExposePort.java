@@ -1,4 +1,4 @@
-package gae.piaz.springtc.config.flask;
+package gae.piaz.springtc.cfg.flask;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;

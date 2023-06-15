@@ -1,4 +1,4 @@
-package gae.piaz.springtc.config.kafka;
+package gae.piaz.springtc.cfg.kafka;
 
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package gae.piaz.springtc.config.postgres;
+package gae.piaz.springtc.cfg.postgres;
 
 import org.springframework.boot.autoconfigure.jdbc.JdbcConnectionDetails;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;

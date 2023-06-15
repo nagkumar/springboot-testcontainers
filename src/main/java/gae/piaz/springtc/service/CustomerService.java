@@ -1,6 +1,6 @@
 package gae.piaz.springtc.service;
 
-import gae.piaz.springtc.config.RedisConfig;
+import gae.piaz.springtc.cfg.RedisConfig;
 import gae.piaz.springtc.controller.CustomerDTO;
 import gae.piaz.springtc.data.CustomerRepository;
 import gae.piaz.springtc.kafka.publisher.CustomerEventPublisher;

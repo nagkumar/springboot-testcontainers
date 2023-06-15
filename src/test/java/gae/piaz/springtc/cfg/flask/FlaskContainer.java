@@ -1,4 +1,4 @@
-package gae.piaz.springtc.config.flask;
+package gae.piaz.springtc.cfg.flask;
 
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.images.builder.ImageFromDockerfile;

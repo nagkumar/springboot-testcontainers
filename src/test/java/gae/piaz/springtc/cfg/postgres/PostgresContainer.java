@@ -1,4 +1,4 @@
-package gae.piaz.springtc.config.postgres;
+package gae.piaz.springtc.cfg.postgres;
 
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;

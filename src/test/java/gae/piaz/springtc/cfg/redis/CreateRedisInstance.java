@@ -1,4 +1,4 @@
-package gae.piaz.springtc.config.redis;
+package gae.piaz.springtc.cfg.redis;
 
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;

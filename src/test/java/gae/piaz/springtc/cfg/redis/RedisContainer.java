@@ -1,4 +1,4 @@
-package gae.piaz.springtc.config.redis;
+package gae.piaz.springtc.cfg.redis;
 
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.utility.DockerImageName;
